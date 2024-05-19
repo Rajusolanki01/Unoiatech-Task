@@ -28,7 +28,7 @@ const Header = () => {
       </div>
       <div className="mt-1 lg:py-0">
         <div className="p-4 xl:w-[96%] xxl:w-[89%] m-auto flex items-center justify-between">
-          <img src={Logo} alt="Company Logo" loading="lazy" />
+          <img src={Logo} alt="Company Logo" />
           <div className="hidden lg:block">
             <ul className="mr-6 w-[700px] flex items-center justify-between gap-5 font-montserratalt font-extrabold text-[#292929BF] text-base tracking-wider cursor-pointer">
               {menuItems.map((item, index) => (
@@ -45,10 +45,10 @@ const Header = () => {
             </ul>
           </div>
           <div className="hidden lg:flex justify-between gap-4 font-montserratalt cursor-pointer">
-            <img src={Button} alt="Contact" loading="lazy" />
-            <img src={Facebook} alt="Facebook" loading="lazy" />
-            <img src={Instagram} alt="Instagram" loading="lazy" />
-            <img src={Linkedin} alt="Linkedin" loading="lazy" />
+            <img src={Button} alt="Contact"  />
+            <img src={Facebook} alt="Facebook"  />
+            <img src={Instagram} alt="Instagram"  />
+            <img src={Linkedin} alt="Linkedin"  />
           </div>
           <div className="lg:hidden flex gap-6 cursor-pointer">
             <IoSearch className="w-8 h-8" />

@@ -52,7 +52,6 @@ const Footer = () => {
               <img
                 src={footerLogo1}
                 alt="Brand-logo"
-                loading="lazy"
                 className="hidden lg:block"
               />
             </div>
@@ -61,7 +60,6 @@ const Footer = () => {
                 <img
                   src={footerLogo2}
                   alt="Brand-logo"
-                  loading="lazy"
                   className="hidden lg:block"
                 />
                 <p className="font-plusjakarta font-normal text-normal text-gray-200 mt-4 text-center">
@@ -112,25 +110,10 @@ const Footer = () => {
               ©2023 olevra advisors. All rights reserved
             </p>
             <div className="flex justify-between m-auto w-48  lg:m-0 lg:w-64">
-              <img
-                src={Facebook}
-                alt="Facebook"
-                className="invert"
-                loading="lazy"
-              />
-              <img
-                src={Instagram}
-                alt="Instagram"
-                className="invert"
-                loading="lazy"
-              />
-              <img src={Twitter} alt="Twitter" loading="lazy" />
-              <img
-                src={Linkedin}
-                alt="Linkedin"
-                className="invert"
-                loading="lazy"
-              />
+              <img src={Facebook} alt="Facebook" className="invert" />
+              <img src={Instagram} alt="Instagram" className="invert" />
+              <img src={Twitter} alt="Twitter" />
+              <img src={Linkedin} alt="Linkedin" className="invert" />
             </div>
           </div>
         </div>

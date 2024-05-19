@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   Button2,
@@ -24,16 +24,16 @@ import {
   VectorSmall,
 } from "../assets";
 
-const HomeSection3Item = memo(({ number, text }) => (
+const HomeSection3Item = ({ number, text }) => (
   <div className="flex gap-2 lg:gap-4 flex-col text-left mt-6 lg:mt-2 lg:p-4">
     <h4 className="font-montserratalt font-extrabold text-5xl text-customPink">
       {number}
     </h4>
     <span className="font-montserrat text-sm font-semibold">{text}</span>
   </div>
-));
+);
 
-const ServiceItem = memo(({ number, title }) => (
+const ServiceItem = ({ number, title }) => (
   <div className="flex flex-col gap-2">
     <div>
       <span className="font-semibold font-montserrat text-customPink text-base">
@@ -44,38 +44,39 @@ const ServiceItem = memo(({ number, title }) => (
       <h4 className="font-montserrat font-extrabold text-xl leading-8">
         {title}
       </h4>
-      <img src={Path} alt="path-arrow" className="w-10" loading="lazy" />
+      <img src={Path} alt="path-arrow" className="w-10" />
       <div className="absolute left-0 bottom-0 w-0 h-[2px] bg-customPink group-hover:w-full transition-all duration-500"></div>
     </div>
   </div>
-));
+);
 
-const FeedbackItem = memo(({ name, comment, image, date }) => (
-  <div className="group feedback cursor-pointer bg-[#C2278E08] rounded-md flex flex-col ml-12 lg:w-[22%]  p-6 hover:bg-customPink transition-all duration-300 transform hover:scale-105">
+const FeedbackItem = ({ name, comment, image, date, hoverClass }) => (
+  <div className="group feedback cursor-pointer bg-customPink *:lg:bg-[#C2278E08] rounded-md flex flex-col ml-12 lg:w-[22%]  p-6 hover:bg-customPink transition-all duration-300 transform hover:scale-105">
     <div className="text-sm flex flex-col gap-4">
-      <p className="font-archiv text-left  text-[#5E84A1] group-hover:text-white transition-colors duration-300 quote">
+      <p className="font-archiv text-left text-white lg:text-[#5E84A1] group-hover:text-white transition-colors duration-300 quote">
         {comment}
       </p>
       <div className="flex gap-3 items-center">
-        <div className="bg-customPink group-hover:bg-white transition-colors duration-300 p-1 rounded-full">
+        <div className="bg-white lg:bg-customPink group-hover:bg-white transition-colors duration-300 p-1 rounded-full">
           <img src={image} alt="feedback" className="w-8" />
         </div>
         <div className="flex flex-col gap-0">
-          <span className="font-poppins text-normal font-bold text-[#1E5068] group-hover:text-white transition-colors duration-300">
+          <span className="font-poppins text-normal font-bold text-white lg:text-[#1E5068] group-hover:text-white transition-colors duration-300">
             {name}
           </span>
-          <span className="block font-poppins text-xs text-gray-500 group-hover:text-white transition-colors duration-300">
+          <span className="block font-poppins text-xs text-white lg:text-gray-500 group-hover:text-white transition-colors duration-300">
             {date}
           </span>
         </div>
       </div>
     </div>
   </div>
-));
+);
 
 const Home = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(null);
+  const [hoverClass, setHoverClass] = useState("");
 
   useEffect(() => {
     const handleResize = () => {
@@ -188,17 +189,19 @@ const Home = () => {
   ];
 
   //* Handlers..............
-  const handleNext = () => {
-    setCurrentIndex(
-      (prevIndex) => (prevIndex + itemsPerPage) % clientFeedBack.length
-    );
+  const handlePrev = () => {
+    setHoverClass("hover-active");
+    setTimeout(() => setHoverClass(""), 300); // remove class after 300ms
+    setCurrentIndex(currentIndex > 0 ? currentIndex - 1 : 0);
   };
 
-  const handlePrev = () => {
+  const handleNext = () => {
+    setHoverClass("hover-active");
+    setTimeout(() => setHoverClass(""), 300); // remove class after 300ms
     setCurrentIndex(
-      (prevIndex) =>
-        (prevIndex - itemsPerPage + clientFeedBack.length) %
-        clientFeedBack.length
+      currentIndex < clientFeedBack.length - itemsPerPage
+        ? currentIndex + 1
+        : clientFeedBack.length - itemsPerPage
     );
   };
 
@@ -222,13 +225,11 @@ const Home = () => {
           src={MaskGroup}
           alt="MaskImage"
           className="w-full hidden lg:block"
-          loading="lazy"
         />
         <img
           src={MaskGroupSmall}
           alt="MaskImage"
           className="w-full lg:hidden block"
-          loading="lazy"
         />
         <div className="absolute xxl:bottom-48 xxl:left-32 xl:bottom-40 xl:left-28 cursor-pointer">
           <Link to="/">
@@ -244,14 +245,12 @@ const Home = () => {
             src={Vector}
             alt="Vector"
             className="w-3/4 h-auto hidden lg:block"
-            loading="lazy"
           />
 
           <img
             src={VectorSmall}
             alt="Vector"
             className="w-11/12 lg:hidden block"
-            loading="lazy"
           />
         </div>
         <div className="absolute top-16 left-20 lg:top-28 lg:left-28 ">
@@ -276,7 +275,6 @@ const Home = () => {
               <img
                 src={image}
                 alt={`Home_logo_${index + 1}`}
-                loading="lazy"
                 className="w-36 h-[70px] -mb-2 lg:w-4/5 lg:ml-12 lg:h-auto lg:mb-0"
               />
             </div>
@@ -321,10 +319,10 @@ const Home = () => {
             <ServiceItem number="05" title="CFO Advisory" />
           </div>
           <div className="absolute top-20  xxl:-top-16 xxl:left-96 xl:-top-16 xl:left-[24%] overflow-hidden hidden lg:block">
-            <img src={Ellipse} alt="Ellipse_img" loading="lazy" />
+            <img src={Ellipse} alt="Ellipse_img" />
           </div>
           <div className="absolute xxl:top-[55%] xxl:-left-32 xl:top-[60%] xl:-left-36 -z-40 ">
-            <img src={Ellipse} alt="Ellipse_img" loading="lazy" />
+            <img src={Ellipse} alt="Ellipse_img" />
           </div>
         </div>
       </div>
@@ -336,21 +334,18 @@ const Home = () => {
             src={Section4}
             alt="section_img"
             className="w-full z-40  hidden lg:block"
-            loading="lazy"
           />
 
           <img
             src={Section4Small}
             alt="section_img"
             className="object-cover z-40 block lg:hidden"
-            loading="lazy"
           />
 
           <img
             src={RectangleMask}
             alt="section_img"
             className="object-cover z-40 block lg:hidden absolute top-0"
-            loading="lazy"
           />
         </div>
         <div className="absolute top-8  lg:top-48 left-32 z-40 cursor-pointer">
@@ -375,17 +370,11 @@ const Home = () => {
             View More
           </h3>
           <div className="relative">
-            <img
-              src={Circle}
-              alt="circle_img"
-              className="w-20 lg:w-28"
-              loading="lazy"
-            />
+            <img src={Circle} alt="circle_img" className="w-20 lg:w-28" />
             <img
               src={PathWhite}
               alt="Path_img"
               className="w-9 h-10 lg:w-12 lg:h-8 absolute bottom-5 left-6 lg:bottom-10 lg:left-8"
-              loading="lazy"
             />
           </div>
         </div>
@@ -416,16 +405,15 @@ const Home = () => {
             </button>
           </div>
           <div className="flex flex-col gap-4 xl:w-[40%]  mt-2 mb-8 order-1 xl:order-2">
-            <img src={MaskGroup2} alt="MaskIMg" className="" loading="lazy" />
+            <img src={MaskGroup2} alt="MaskIMg" className="" />
           </div>
           <div className="absolute xxl:top-24 xxl:left-96 xl:top-24 xl:left-[24%] overflow-hidden hidden lg:block">
-            <img src={Ellipse} alt="Ellipse_img" loading="lazy" />
+            <img src={Ellipse} alt="Ellipse_img" />
           </div>
           <div className="absolute top-[60%] -left-[10%] xxl:top-[70%] xxl:-left-52 xl:top-[70%] xl:-left-44  ">
             <img
               src={Ellipse}
               alt="Ellipse_img"
-              loading="lazy"
               className="w-2/3 -rotate-180 lg:w-full lg:-rotate-0"
             />
           </div>
@@ -439,7 +427,6 @@ const Home = () => {
             src={MaskGroup3}
             alt="MaskGroup_img"
             className="w-full h-72 lg:h-full object-cover"
-            loading="lazy"
           />
         </div>
         <div className="absolute top-28 right-36 xxl:top-72 xxl:right-[45%] xl:top-60 xl:right-[45%] grid items-center">
@@ -476,20 +463,28 @@ const Home = () => {
               className="flex items-center justify-between"
               onClick={handlePrev}
             >
-              <img src={LeftArrow} alt="Arrow-Left" className="lg:w-10 w-[150px]" />
+              <img
+                src={LeftArrow}
+                alt="Arrow-Left"
+                className="lg:w-10 w-[150px]"
+              />
             </div>
           )}
           {clientFeedBack
             .slice(currentIndex, currentIndex + itemsPerPage)
             .map((feedback, index) => (
-              <FeedbackItem key={index} {...feedback} />
+              <FeedbackItem key={index} {...feedback} hoverClass={hoverClass} />
             ))}
           {!hideRightArrow && (
             <div
               className="flex items-center justify-between"
               onClick={handleNext}
             >
-              <img src={RightArrow} alt="Arrow-Right" className="lg:w-10 w-[150px]" />
+              <img
+                src={RightArrow}
+                alt="Arrow-Right"
+                className="lg:w-10 w-[150px]"
+              />
             </div>
           )}
         </div>
