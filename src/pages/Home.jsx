@@ -25,7 +25,7 @@ import {
 } from "../assets";
 
 const HomeSection3Item = ({ number, text }) => (
-  <div className="flex gap-2 lg:gap-4 flex-col justify-center text-left mt-6 ml-3 lg:ml-0 lg:mt-2 lg:p-4 w-[40%]">
+  <div className="flex gap-2 lg:gap-4 flex-col text-left mt-6 px-2 lg:px-0 lg:mt-2 lg:p-4 w-[40%] lg:w-36">
     <h4 className="font-montserratalt font-extrabold text-5xl text-customPink">
       {number}
     </h4>
@@ -287,7 +287,7 @@ const Home = () => {
 
       {/* SECTION-3 */}
       <div className="">
-        <div className="flex flex-wrap lg:flex-nowrap p-8 items-center justify-between">
+        <div className="flex flex-wrap lg:flex-nowrap p-8 items-center justify-between m-auto w-full lg:w-4/5">
           {homeSection3Items.map((item, index) => (
             <HomeSection3Item key={index} {...item} />
           ))}
