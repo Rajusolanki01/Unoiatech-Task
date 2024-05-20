@@ -80,8 +80,12 @@ const Home = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth <= 640) {
+      if (window.innerWidth <= 440) {
         setItemsPerPage(1);
+      } else if (window.innerWidth <= 768) {
+        setItemsPerPage(2);
+      } else if (window.innerWidth <= 968) {
+        setItemsPerPage(3);
       } else {
         setItemsPerPage(4);
       }
@@ -91,10 +95,9 @@ const Home = () => {
 
     window.addEventListener("resize", handleResize);
 
-    // Initial check
-
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
   //* Testimonial Data..........
 
   const clientFeedBack = [
