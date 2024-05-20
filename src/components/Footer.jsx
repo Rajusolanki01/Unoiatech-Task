@@ -37,8 +37,8 @@ const Footer = () => {
 
         {/* For Mobile View  */}
 
-        <div className="block lg:hidden w-4/5 h-auto mt-12 mb-24 m-auto">
-          <div className="flex flex-wrap gap-8">
+        <div className="block lg:hidden mt-12 mb-24 p-4">
+          <div className="flex flex-wrap justify-between gap-7 w-[89%] m-auto mr-1.8">
             <img src={footerMobile1} alt="Logo" />
             <img src={footerMobile2} alt="Logo" />
             <img src={footerMobile3} alt="Logo" />

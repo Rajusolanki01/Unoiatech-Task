@@ -25,7 +25,7 @@ import {
 } from "../assets";
 
 const HomeSection3Item = ({ number, text }) => (
-  <div className="flex gap-2 lg:gap-4 flex-col text-left mt-6 lg:mt-2 lg:p-4">
+  <div className="flex gap-2 lg:gap-4 flex-col justify-center text-left mt-6 ml-3 lg:ml-0 lg:mt-2 lg:p-4 w-[40%]">
     <h4 className="font-montserratalt font-extrabold text-5xl text-customPink">
       {number}
     </h4>
@@ -51,7 +51,7 @@ const ServiceItem = ({ number, title }) => (
 );
 
 const FeedbackItem = ({ name, comment, image, date, hoverClass }) => (
-  <div className="group feedback cursor-pointer bg-customPink *:lg:bg-[#C2278E08] rounded-md flex flex-col ml-12 lg:w-[22%]  p-6 hover:bg-customPink transition-all duration-300 transform hover:scale-105">
+  <div className="group feedback cursor-pointer bg-customPink lg:bg-[#C2278E08] rounded-md flex flex-col ml-12 lg:w-[22%]  p-6 hover:bg-customPink transition-all duration-300 transform hover:scale-105">
     <div className="text-sm flex flex-col gap-4">
       <p className="font-archiv text-left text-white lg:text-[#5E84A1] group-hover:text-white transition-colors duration-300 quote">
         {comment}
@@ -284,7 +284,7 @@ const Home = () => {
 
       {/* SECTION-3 */}
       <div className="">
-        <div className="flex flex-wrap lg:flex-nowrap p-8 items-center justify-between container">
+        <div className="flex flex-wrap lg:flex-nowrap p-8 items-center justify-between">
           {homeSection3Items.map((item, index) => (
             <HomeSection3Item key={index} {...item} />
           ))}
@@ -339,23 +339,23 @@ const Home = () => {
           <img
             src={Section4Small}
             alt="section_img"
-            className="object-cover z-40 block lg:hidden"
+            className="object-cover z-40 block lg:hidden w-full"
           />
 
           <img
             src={RectangleMask}
             alt="section_img"
-            className="object-cover z-40 block lg:hidden absolute top-0"
+            className="object-cover z-40 block lg:hidden absolute top-0 w-full"
           />
         </div>
-        <div className="absolute top-8  lg:top-48 left-32 z-40 cursor-pointer">
-          <h3 className="text-customPink lg:text-white font-semibold tracking-wider lg:text-2xl lg:font-normal font-oswald lg:font-plusjakarta leading-10">
+        <div className="absolute top-8  lg:top-48 left-[33%] lg:left-0 z-40 cursor-pointer w-1/3">
+          <h3 className="text-customPink  text-center lg:text-white font-semibold tracking-wider lg:text-2xl lg:font-normal font-oswald lg:font-plusjakarta leading-10">
             Olvera Guides
           </h3>
         </div>
 
         <div className="absolute top-20 left-16 z-40 cursor-pointer block lg:hidden w-2/3">
-          <h3 className="text-white font-montserrat text-2xl font-medium leading-6 tracking-wide">
+          <h3 className="text-white text-center font-montserrat text-2xl font-medium leading-6 tracking-wide">
             Careers At Olvera
           </h3>
         </div>
@@ -365,7 +365,7 @@ const Home = () => {
             Ollie Restructuring Guide
           </h3>
         </div>
-        <div className="flex items-center gap-4 absolute top-[78%] left-[28%]  lg:top-[40%] lg:left-[70%] cursor-pointer z-40">
+        <div className="flex items-center gap-4 absolute top-[78%] left-[25%]  lg:top-[40%] lg:left-[70%] cursor-pointer z-40">
           <h3 className="text-white text-lg font-normal font-montserrat leading-6">
             View More
           </h3>
@@ -378,7 +378,7 @@ const Home = () => {
             />
           </div>
         </div>
-        <div className="absolute top-52 left-24  lg:top-96 lg:left-32 z-40 w-44 lg:w-1/3 lg:h-14 lg:text-left  text-center">
+        <div className="absolute top-52 left-24  lg:top-96 lg:left-32 z-40 w-52 lg:w-1/3 lg:h-14 lg:text-left  text-center">
           <span className="font-archivo text-sm leading-6 font-normal text-white">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -408,9 +408,9 @@ const Home = () => {
             <img src={MaskGroup2} alt="MaskIMg" className="" />
           </div>
           <div className="absolute xxl:top-24 xxl:left-96 xl:top-24 xl:left-[24%] overflow-hidden hidden lg:block">
-            <img src={Ellipse} alt="Ellipse_img" />
+            <img src={Ellipse} alt="Ellipse_img" className="" />
           </div>
-          <div className="absolute top-[60%] -left-[10%] xxl:top-[70%] xxl:-left-52 xl:top-[70%] xl:-left-44  ">
+          <div className="absolute top-[60%] -left-[10%] xxl:top-[70%] xxl:-left-52 xl:top-[70%] xl:-left-44">
             <img
               src={Ellipse}
               alt="Ellipse_img"
